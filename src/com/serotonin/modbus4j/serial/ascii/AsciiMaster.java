@@ -111,15 +111,15 @@ public class AsciiMaster extends SerialMaster {
         }
         catch (Exception e) {
             try {
-                LOG.debug("Connection may have been reset. Attempting to re-open.");
-                openConnection(conn);
+                // LOG.debug("Connection may have been reset. Attempting to re-open.");
+                // openConnection(conn);
                 asciiResponse = (AsciiMessageResponse) conn.send(asciiRequest);
                 if (asciiResponse == null)
                     return null;
                 return asciiResponse.getModbusResponse();
             }catch(Exception e2) {
-                closeConnection(conn);
-                LOG.debug("Failed to re-connect", e);
+                // closeConnection(conn);
+                // LOG.debug("Failed to re-connect", e);
                 throw new ModbusTransportException(e2, request.getSlaveId());
             }
         }
